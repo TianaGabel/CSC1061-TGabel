@@ -58,7 +58,6 @@ public class Fan {
 
 	public String toString() {
 		if (on) {
-			//add id
 			return "Fan Id: " + ID +  ", speed is " + speed + ", radius is " + radius + ", color is " + color + "";
 		}
 		else {
