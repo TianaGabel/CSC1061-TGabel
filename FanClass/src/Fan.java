@@ -27,7 +27,7 @@ public class Fan {
 		return speed;
 	}
 	
-	public boolean getOn() {
+	public boolean isOn() {
 		return on;
 	}
 	
