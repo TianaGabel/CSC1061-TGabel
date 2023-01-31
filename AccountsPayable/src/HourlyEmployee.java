@@ -31,12 +31,10 @@ public class HourlyEmployee extends Employee{
 		return (hourlyWage * hours);
 	}
 
-	// TODO how do you call a method from within a class
-	//////
 	@Override
 	public String toString() {
-		return "Employee:\n firstName=" + firstName + "\n lastName=" + lastName + "\n socialSecurityNum="
-				+ socialSecurityNum + "\n Payment amount=" + (hourlyWage * hours) + " for hourly rate";
+		return "Employee:\n firstName=" + this.getFirstName() + "\n lastName=" + this.getLastName() + "\n socialSecurityNum="
+				+ this.getSocialSecurityNum() + "\n Payment amount=" + this.getPaymentAmount() + " for hourly rate";
 	}
 
 

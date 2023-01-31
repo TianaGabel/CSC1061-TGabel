@@ -1,15 +1,19 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountsPayable {
 	static ArrayList<Employee> payableEmployees = new ArrayList<>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Create 6 employees: \n  [1]Salaried Employee\n  [2]Commission Employee "
-				+ "\n  [3]Base + Commission Employee\n  [4]Hourly Employee");
+		// For testing, this is also why the program throws a file not found exception
+		//Scanner scan = new Scanner(new File("sampleEmployee"));
 		while (payableEmployees.size() < 6) {
+			System.out.println("Create 6 employees: \n  [1]Salaried Employee\n  [2]Commission Employee "
+					+ "\n  [3]Base + Commission Employee\n  [4]Hourly Employee");
 			System.out.println("Enter employee you wish to create:  \r");
 			while (!(scan.hasNextInt())) {
 				System.out.println("Enter a number between 1 and 4");
@@ -81,10 +85,9 @@ public class AccountsPayable {
 				BasePlusCommissionEmployee currBPC = (BasePlusCommissionEmployee) employee;
 				// increases base pay by 10%
 				currBPC.setBasePay(currBPC.getBasePay() * 1.10);
-				System.out.println("Base + Commission Employee Salary increased by 10%");
+				System.out.println("\n Base + Commission Employee Salary increased by 10%");
 			}
 		}
-		System.out.println("\nIncreasing Base pay by 10% for all Base + Commission Employees");
 
 		// Prints out all employees
 		System.out.println("\nName                       Payment Amount");

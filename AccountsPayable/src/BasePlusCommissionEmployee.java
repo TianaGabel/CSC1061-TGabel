@@ -25,8 +25,8 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
 
 	@Override
 	public String toString() {
-		return "Employee:\n firstName=" + firstName + "\n lastName=" + lastName + "\n socialSecurityNum="
-				+ socialSecurityNum + "\n Payment amount=" + this.getPaymentAmount() + " paid on base and commision";
+		return "Employee:\n firstName=" + this.getFirstName() + "\n lastName=" + this.getFirstName() + "\n socialSecurityNum="
+				+ this.getSocialSecurityNum() + "\n Payment amount=" + this.getPaymentAmount() + " paid on base and commision";
 	}
 
 }

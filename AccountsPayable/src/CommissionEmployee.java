@@ -33,8 +33,8 @@ public class CommissionEmployee extends Employee {
 
 	@Override
 	public String toString() {
-		return "Employee:\n firstName=" + firstName + "\n lastName=" + lastName + "\n socialSecurityNum="
-				+ socialSecurityNum + "\n Payment amount=" + (grossSales * commissionRate) + " paid on commision";
+		return "Employee:\n firstName=" + this.getFirstName() + "\n lastName=" + this.getLastName() + "\n socialSecurityNum="
+				+ this.getSocialSecurityNum() + "\n Payment amount=" + this.getPaymentAmount() + " paid on commision";
 	}
 
 }

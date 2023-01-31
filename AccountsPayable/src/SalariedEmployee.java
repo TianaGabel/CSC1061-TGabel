@@ -23,8 +23,8 @@ public class SalariedEmployee extends Employee {
 	
 	@Override
 	public String toString() {
-		return "Employee:\n firstName=" + firstName + "\n lastName=" + lastName + "\n socialSecurityNum="
-				+ socialSecurityNum + "\n Payment amount=" + weeklySalary + " paid weekly";
+		return "Employee:\n firstName=" + this.getFirstName() + "\n lastName=" + this.getLastName() + "\n socialSecurityNum="
+				+ this.getSocialSecurityNum() + "\n Payment amount=" + this.getPaymentAmount() + " paid weekly";
 	}
 
 }
