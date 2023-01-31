@@ -26,6 +26,11 @@ public class FileReaderExample {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		//Reading from file
+		while(input.hasNextLine()){
+			//and reading thing
+		}
+		
 		//File ArrayException
 		try {
 			int[] myNums = {1,2,3};
@@ -34,6 +39,8 @@ public class FileReaderExample {
 			System.out.println("ex 2: Something went wrong");
 			e.printStackTrace();
 			System.exit(-1);
+		} finally {
+			System.out.println("Done!");
 		}
 		
 		
