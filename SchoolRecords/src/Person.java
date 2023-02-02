@@ -5,4 +5,13 @@ public class Person {
 	String phoneNum;
 	String emailAddress;
 	
+	public Person(String name, String address, String phoneNum, String emailAddress) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phoneNum = phoneNum;
+		this.emailAddress = emailAddress;
+	}
+	
+	
 }

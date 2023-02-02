@@ -40,9 +40,9 @@ public class AccountsPayable {
 				payableEmployees.add(salariedEmployee);
 			} else if (userNum == 2) {
 				// creates Commission Employee
-				System.out.println("Enter commission rate in Dollars:");
+				System.out.println("Enter commission rate as a decimal:");
 				double commissionRate = scan.nextDouble();
-				System.out.println("Enter gross sales:");
+				System.out.println("Enter gross sales in dollars:");
 				double grossSales = scan.nextDouble();
 				CommissionEmployee commissionEmployee = new CommissionEmployee(firstName, lastName, ssn, grossSales,
 						commissionRate);
@@ -51,9 +51,9 @@ public class AccountsPayable {
 				// creates Base + Commmision Employee
 				System.out.println("Enter Base pay:");
 				double basePay = scan.nextDouble();
-				System.out.println("Enter commission rate in Dollars:");
+				System.out.println("Enter commission rate as a decimal:");
 				double commissionRate = scan.nextDouble();
-				System.out.println("Enter gross sales:");
+				System.out.println("Enter gross sales in dollars:");
 				double grossSales = scan.nextDouble();
 
 				BasePlusCommissionEmployee cbEmployee = new BasePlusCommissionEmployee(firstName, lastName, ssn,

@@ -17,7 +17,6 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
 		this.basePay = basePay;
 	}
 	
-	//TODO how do we call grossSales from the superclass????
 	@Override
 	public double getPaymentAmount() {
 		return (basePay + (super.getGrossSales() * super.getCommissionRate()));
