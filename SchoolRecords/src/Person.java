@@ -12,6 +12,12 @@ public class Person {
 		this.phoneNum = phoneNum;
 		this.emailAddress = emailAddress;
 	}
+
+	@Override
+	public String toString() {
+		return "Person\n name: " + name + "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
+				+ emailAddress;
+	}
 	
 	
 }
