@@ -4,7 +4,6 @@ import java.util.Arrays;
 public class TestSchoolRecords {
 
 	public static void main(String[] args) {
-		// TODO have it create Javac documentation
 		// Creating some peeps
 		Student student1 = new Student("John Doe", "123 mulberry ln", "123-333-4444", "JohnDoe@email.com","Freshman");
 		Student student2 = new Student("Dude mcDude", "90 main blvd", "44-333-4444", "Dude2x@email.com","Senior");

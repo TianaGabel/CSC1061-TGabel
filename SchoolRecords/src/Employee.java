@@ -14,8 +14,8 @@ public class Employee extends Person {
 
 	@Override
 	public String toString() {
-		return "Employee\n name: " + name + "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
-				+ emailAddress + "\n office:" + office + "\n salary:" + salary + "\n dateHired:" + dateHired;
+		return "Employee," + name + "," + address + "," + phoneNum + ","
+				+ emailAddress + "," + office + "," + salary + "," + dateHired;
 	}
 
 }

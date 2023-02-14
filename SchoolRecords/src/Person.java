@@ -15,7 +15,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person\n name: " + name + "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
+		return "Person," + name + "," + address + "," + phoneNum + ","
 				+ emailAddress;
 	}
 	

@@ -12,13 +12,8 @@ public class Faculty extends Employee {
 
 	@Override
 	public String toString() {
-		//TODO tbh idk if this is actually worth the work.
-		String s = String.format("Faculty\n Name: " "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
-				+ emailAddress + "\n office:" + office + "\n salary:" + salary + "\n dateHired:" + dateHired + "\n officeHours:" + officeHours + "\n rank:" + rank;
-
-		
-		return "Faculty\n name: " + name + "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
-				+ emailAddress + "\n office:" + office + "\n salary:" + salary + "\n dateHired:" + dateHired + "\n officeHours:" + officeHours + "\n rank:" + rank;
+		return "Faculty," + name + "," + address + "," + phoneNum + ","
+				+ emailAddress + "," + office + "," + salary + "," + dateHired + "," + officeHours + "," + rank;
 	}
 	
 

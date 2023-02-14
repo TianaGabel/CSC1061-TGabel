@@ -10,8 +10,8 @@ public class Staff extends Employee{
 
 	@Override
 	public String toString() {
-		return "Staff\n name: " + name + "\n address:" + address + "\n phoneNum" + phoneNum + "\n email Address:"
-				+ emailAddress + "\n office:" + office + "\n salary:" + salary + "\n dateHired:" + dateHired +"\n title:" + title;
+		return "Staff," + name + "," + address + "," + phoneNum + ","
+				+ emailAddress + "," + office + "," + salary + "," + dateHired +"," + title;
 	}
 	
 	
