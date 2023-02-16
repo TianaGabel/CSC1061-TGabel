@@ -23,6 +23,6 @@ public class SavingsAccount extends Account{
 	@Override
 	public String toString() {
 		return "Savings Account\nAccount holder:" + getCustomerName() + "\nId: " + getId() + "\nThis account was created: " + getDateCreated() + "\nBalance: $" + getBalance() +
-				"\nMonthly Interest: " + getMonthlyInterest();
+				"\nMonthly Interest: %" + getMonthlyInterest();
 	}
 }

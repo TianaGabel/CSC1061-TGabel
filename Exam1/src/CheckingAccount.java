@@ -45,6 +45,6 @@ public class CheckingAccount extends Account {
 	@Override
 	public String toString() {
 		return "Checking Account\nAccount holder:" + getCustomerName() + "\nId: " + getId() + "\nThis account was created: " + getDateCreated() + "\nBalance: $"
-				+ getBalance() + "\nMonthly Interest: " + getMonthlyInterest();
+				+ getBalance() + "\nMonthly Interest: %" + getMonthlyInterest();
 	}
 }

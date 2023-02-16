@@ -98,7 +98,7 @@ public class Account {
 	// TODO format decimal output for balance
 	public String toString() {
 		return "Account holder:" + customerName + "\nId: " + getId() + "\nThis account was created: " + getDateCreated()
-				+ "\nBalance: $" + getBalance() + "\nMonthly Interest: " + getMonthlyInterest();
+				+ "\nBalance: $" + getBalance() + "\nMonthly Interest: %" + getMonthlyInterest();
 	}
 
 	public void printAccountSummary() {
