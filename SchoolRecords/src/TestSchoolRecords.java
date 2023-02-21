@@ -1,17 +1,25 @@
+/*
+ * Copyright(c) 2023 Tatiana Gabel
+ */
+/**
+ * 
+ * @author Tatiana Gabel
+ * @version 1.0
+ */
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 public class TestSchoolRecords {
 
 	public static void main(String[] args) {
 		// Creating some peeps
 		Student student1 = new Student("John Doe", "123 mulberry ln", "123-333-4444", "JohnDoe@email.com","Freshman");
 		Student student2 = new Student("Dude mcDude", "90 main blvd", "44-333-4444", "Dude2x@email.com","Senior");
-		Faculty faculty1 = new Faculty("Anne something", "444 the street", "970-666-6666", "A.something@school.email.com", "A100", "$78,000",
+		Faculty faculty1 = new Faculty("Anne something", "444 the street", "970-666-6666", "A.something@school.email.com", "A100", "$78000",
 				"Feb. 12th 2018", "M-F 8:00 A.M. - 11:30 A.M.", "Dean");
-		Faculty faculty2 = new Faculty("Lucy Last-Name", "780 Garibaldi drive", "110-321-89", "L.LastName@school.email.com", "B23", "$52,000",
+		Faculty faculty2 = new Faculty("Lucy Last-Name", "780 Garibaldi drive", "110-321-89", "L.LastName@school.email.com", "B23", "$52000",
 				"May 30th 2021", "M-T 2:00 P.M. - 5:00 P.M.", "Physics Department");
-		Staff staff1 = new Staff("Bob Builder", "333 livingston", "333-66-777", "B.Builder@school.email.com", "H12", "$52,000",
+		Staff staff1 = new Staff("Bob Builder", "333 livingston", "333-66-777", "B.Builder@school.email.com", "H12", "$52000",
 				"December 1st 2022", "Admissions Advisor");
 		Staff staff2 = new Staff("Peter Parker", "ll2 drive", "400-66-47", "P.Parker@school.email.com", "H16", "$3",
 				"March 20th 2001", "Employee");
@@ -23,17 +31,23 @@ public class TestSchoolRecords {
 
 		// Then we will write each person to the person database using the writePerson()
 		// method in Database
-		//Database database = new Database();
-		for (Person person : testPersons) {
-			System.out.println(person);
-			//database.writePerson();
+		try {
+			//Creates database
+			Database database = new Database();
+			for (Person person : testPersons) {
+				//Adds each person from testPersons to the database
+				database.writePerson(person);
+			}
+			database.closeDatabase();
+			
+			ArrayList<Person> filePersons = database.readDatabase();
+			for (Person person : filePersons) {
+				System.out.println("" + person);
+			}
+		} catch (IOException e) {
+			System.out.println("Misprint");
+			e.printStackTrace();
 		}
-
-		//ArrayList<Person> filePersons = readDatabase();
-		//for (Person person : filePersons) {
-		//	System.out.println("" + person);
-		//}
-
 	}
 
 }

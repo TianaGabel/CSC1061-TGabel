@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"<Unnamed>","c":"Student","l":"Student(String, String, String, String, String)","u":"%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"},{"p":"<Unnamed>","c":"Student","l":"toString()"}];updateSearchResults();
+memberSearchIndex = [{"p":"<Unnamed>","c":"TestSchoolRecords","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"<Unnamed>","c":"TestSchoolRecords","l":"TestSchoolRecords()","u":"%3Cinit%3E()"}];updateSearchResults();

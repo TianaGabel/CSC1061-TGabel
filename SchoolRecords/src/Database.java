@@ -1,17 +1,26 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * @author Tia
+ *This class creates a database file. We can write people to this database, 
+ *as well as read people from this database
+ */
 public class Database {
-	final String PDFile= "PersonDatabase";
-	File myFile;
-	PrintWriter pw;
-	Scanner scan;
-	
+	final String PDFile= "PersonDatabase.csv";
+	private File myFile;
+	private PrintWriter pw;
+	private Scanner scan;
+	/**
+	 * @throws IOException
+	 * Creates a .csv file to be the database and initialize a printWriter
+	 */
 	public Database() throws IOException {
 		// Creates database file if it does not exist already
 		myFile =  new File(PDFile);
@@ -21,16 +30,31 @@ public class Database {
 			}
 		}
 		// Creates filewriter 
-		pw = new PrintWriter(myFile.getName());
+		pw = new PrintWriter(new BufferedWriter(new FileWriter(PDFile)));
 		// Header if anyone displays information as an excel file
 		pw.println("Type,Name,Address,Phone Number,Email");
 	}
-
-	public void writePerson(Person person){
+	/**
+	 * 
+	 * @param person
+	 * @throws IOException
+	 * Prints person to database
+	 */
+	public void writePerson(Person person) throws IOException{
 		// Writes a single person on a single line
-		pw.println("" + person);
+		pw.println(person.toString());
 	}
 	
+	/**
+	 * Closes printwriter so file can be opened elsewhere
+	 */
+	public void closeDatabase() {
+		pw.close();
+	}
+	/**
+	 * reads database, by calling the read person method for the number of persons in the database
+	 * @return ArrayList of persons
+	 */
 	public ArrayList<Person> readDatabase(){
 		//This will read all person from the file and return arraylist of persons
 		ArrayList<Person> persons = new ArrayList<>();
@@ -52,7 +76,12 @@ public class Database {
 		}
 		return persons;
 	}
-	
+	/**
+	 * Reads information from the line and creates an object of the specified type
+	 * if type is not listed then null is returned
+	 * @param currLine The currentline represents a single person in the database
+	 * @return a person object
+	 */
 	private Person readPerson(String currLine) {
 		String[] info = currLine.split(",");
 		//Figure out what type it is then input all the data accordingly
