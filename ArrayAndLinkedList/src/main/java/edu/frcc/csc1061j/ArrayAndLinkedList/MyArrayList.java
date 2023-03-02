@@ -1,5 +1,6 @@
 package edu.frcc.csc1061j.ArrayAndLinkedList;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -42,13 +43,13 @@ public class MyArrayList<Type> implements List<Type> {
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		Object[] a = Arrays.copyOf(array, size);
+		return a;
 	}
 
 	@Override
 	public <T> T[] toArray(T[] a) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
