@@ -26,8 +26,24 @@ public class Song {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (o != null && o instanceof Song) {
+			Song s = (Song) o;
+			if((this.artist.equals(s.getArtist())) &&(this.title.equals(s.getTitle()))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
 	public String toString() {
 		return "[" + title + " by " + artist + "]";
+	}
+	
+	//This will print out a formatted print for saving songs
+	public String fToString() {
+		return title + "," + artist;
 	}
 	
 	
