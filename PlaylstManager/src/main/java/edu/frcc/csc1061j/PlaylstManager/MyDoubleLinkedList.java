@@ -1,4 +1,5 @@
 package edu.frcc.csc1061j.PlaylstManager;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,12 +22,12 @@ public class MyDoubleLinkedList<E> implements List<E> {
 	private class Node {
 		public E data;
 		public Node next;
-		public Node prev; 
+		public Node prev;
 
 		public Node(E data) {
 			this.data = data;
 			this.next = null;
-			this.prev = null; 
+			this.prev = null;
 		}
 
 		public String toString() {
@@ -43,11 +44,10 @@ public class MyDoubleLinkedList<E> implements List<E> {
 	 */
 	public MyDoubleLinkedList() {
 		head = null;
-		tail = null; 
+		tail = null;
 		size = 0;
 	}
 
-	
 	@Override
 	public boolean add(E element) {
 		Node newNode = new Node(element);
@@ -63,7 +63,6 @@ public class MyDoubleLinkedList<E> implements List<E> {
 		return true;
 	}
 
-
 	@Override
 	public void add(int index, E element) {
 		Node newNode = new Node(element);
@@ -75,8 +74,12 @@ public class MyDoubleLinkedList<E> implements List<E> {
 			Node node = getNode(index - 1);
 			newNode.next = node.next;
 			newNode.prev = node;
-			node.next.prev = newNode;
 			node.next = newNode;
+			if (newNode.next != null) {
+				newNode.next.prev = newNode;
+			} else {
+				tail = newNode;
+			}
 		}
 		size++;
 	}
@@ -142,10 +145,9 @@ public class MyDoubleLinkedList<E> implements List<E> {
 
 	@Override
 	public int indexOf(Object target) {
-		// TODO: FILL THIS IN!
 		Node node = head;
 		for (int i = 0; i < size; i++) {
-			if (equals(target, node.data)) {
+			if (target.equals(node.data)) {
 				return i;
 			}
 			node = node.next;
@@ -215,23 +217,27 @@ public class MyDoubleLinkedList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-		// TODO: FILL THIS IN!
+		//I think this code could be improved, by combing the begining conditions and end conditions, but I am not sure how
 		E element = get(index);
-		if (index == 0) {
-			if (tail == head) {
+		if (index == 0) { //case for removing the first node
+			if (tail == head) { //case for only one element
 				tail = null;
-			}
+				head = null;
+			} else {
 			head = head.next;
 			head.prev = null;
+			}
 		} else {
 			Node node = getNode(index - 1);
 			node.next = node.next.next;
-			node.next.prev = node;
+			if (node.next != null) {
+				node.next.prev = node;
+			} else {
+				tail = node; // if the deleted node was the tail, the tail is updated
+			}
 		}
 		size--;
 		return element;
-
-		// return null;
 	}
 
 	@Override
@@ -282,5 +288,5 @@ public class MyDoubleLinkedList<E> implements List<E> {
 	public <T> T[] toArray(T[] a) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 }
