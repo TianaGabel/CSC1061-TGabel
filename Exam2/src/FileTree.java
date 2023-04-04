@@ -42,12 +42,9 @@ public class FileTree implements Iterable <FileNode> {
 		File[] fileList = fileNode.getFile().listFiles();
 		for (File file: fileList) {
 			FileNode tmpFile = new FileNode(file);
-			System.out.println(tmpFile);
 			//This is the recursive call it will call this on each next child until the end of that branch is reached
 			buildTree(tmpFile);
 			tmpList.add(tmpFile);
-			System.out.println(tmpList.size());
-			System.out.println("here");
 		}
 		fileNode.setChildNodes(tmpList);
 	}
