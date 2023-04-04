@@ -27,6 +27,7 @@
     </dependency>
     <dependency>
     	<!-- this is a comment-->
+    	<!-- We added these dependecies-->
     	<groupId>org.jsoup</groupId>
     	<artifactId>jsoup</artifactId>
     	<version>1.15.4</version>

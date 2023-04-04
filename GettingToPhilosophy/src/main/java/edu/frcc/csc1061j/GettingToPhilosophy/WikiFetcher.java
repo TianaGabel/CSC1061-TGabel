@@ -12,6 +12,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
+//TODO we should only create one wikiFetcher and use it for all requests
+//This is because we need the "sleep" function
 public class WikiFetcher {
 	private long lastRequestTime = -1;
 	private long minInterval = 1000;
@@ -23,7 +25,12 @@ public class WikiFetcher {
 	 * @return
 	 * @throws IOException
 	 */
+	//our return type is "Elements
+	
+	//This takes in a url and returns an Elements collection
+	//it has one DOM element for each paragraph(This is explained in a previous chapter)
 	public Elements fetchWikipedia(String url) throws IOException {
+		//LOL so basically this is so wikipedia doesn't kick us off
 		sleepIfNeeded();
 
 		// download and parse the document

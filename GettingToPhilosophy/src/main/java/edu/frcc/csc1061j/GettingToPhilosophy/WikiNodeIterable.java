@@ -21,6 +21,8 @@ import org.jsoup.nodes.Node;
  * @author downey
  *
  */
+//It makes sense to use an iterable rather than a method sometimes,
+//because we can then use this anywhere an iterable is needed
 public class WikiNodeIterable implements Iterable<Node> {
 
 	private Node root;
@@ -85,6 +87,7 @@ public class WikiNodeIterable implements Iterable<Node> {
 			return node;
 		}
 
+		//TODO what is the point of this??
 		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
