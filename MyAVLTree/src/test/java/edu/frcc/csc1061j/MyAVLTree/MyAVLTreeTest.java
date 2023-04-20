@@ -40,6 +40,20 @@ public class MyAVLTreeTest {
 
 		System.out.println("After LR rotation at node 25");
 		printBalanceFactor(map);
+		
+		map.remove(25);
+		System.out.println("Removed 25");
+		printBalanceFactor(map);
+		map.remove(30);
+		System.out.println("Removed 30");
+		printBalanceFactor(map);
+		map.remove(34);
+		System.out.println("Removed 34");
+		map.remove(50);
+		System.out.println("Removed 50");
+		printBalanceFactor(map);
+		map.remove(10);
+		map.remove(5);
 	}
 
 	private static void printInOrder(MyAVLTree<Integer, Integer> map) {
