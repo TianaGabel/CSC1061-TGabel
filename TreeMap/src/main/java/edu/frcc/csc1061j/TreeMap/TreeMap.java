@@ -13,6 +13,14 @@ public class TreeMap<K,V> implements Map<K,V>, Iterable<V>
 	private Node root = null;//root
 	private int size = 0;//map's size
 	
+	public V getRoot() {
+		return root.value;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	
 	//from outside you can see either key or value
 	private class Node
 	{
@@ -170,8 +178,58 @@ public class TreeMap<K,V> implements Map<K,V>, Iterable<V>
 	//HW
 	@Override
 	public V remove(Object key) {
-		// TODO Auto-generated method stuba
-		return null;
+		//First we find the value
+		V value = get(key);
+		//Then we delete the value
+		if (value == null) {
+			return null;
+		} else {
+		root = remove(root, key); //This covers that case that we have to change the root
+		size--;
+		return value;
+		}
+		
+	}
+	
+	private Node remove(Node currRoot, Object key) {
+		if (currRoot == null) {
+			return null;
+		}
+		Comparable<K> k = (Comparable<K>) key;
+		if (k.compareTo(currRoot.key) < 0) {
+			currRoot.left = remove(currRoot.left, key);
+			return currRoot;
+		} else if (k.compareTo(currRoot.key) > 0) {
+			currRoot.right = remove(currRoot.right, key);
+			return currRoot;
+		} else {
+			//This means that the currRoot is the thing to be deleted
+			//Case 1 no children
+			if (currRoot.left ==  null & currRoot.right == null) {
+				return null; //This will return null back to the parents call
+			}else if (currRoot.left == null ^ currRoot.right == null) {
+				//Xor operation so one or the other but not both
+				if (currRoot.left == null) {
+					return currRoot.right; //Basically instead of the node we wanted to remove, we replace it with it's child
+				} else {
+					return currRoot.left;
+				}
+			} else {
+				//This is the case that there are 2 children
+				//We can replace the node(or information) with the leftmost descendant of it's right child
+				Node current = currRoot.right;
+				while (current.left != null)
+				{
+					current = current.left;
+				}
+				currRoot.key = current.key;
+				currRoot.value = current.value;
+				//Then repeat the deletion process with the other node so there is not a repeat
+				currRoot.right = remove(currRoot.right, current.key);
+				return currRoot;
+			}
+		}
+		//return null; //Not necessay, but won't compile without it
 	}
 
 	@Override
