@@ -8,17 +8,14 @@ public class MyAVLTreeTest {
 	public static void main(String[] args) {
 		MyAVLTree<Integer, Integer> map = new MyAVLTree<>();
 		
-		map.put(25, 25);
+		map.put(1, 1);
 		printInOrder(map);
 		
-		map.put(20, 20);
+		map.put(2, 2);
 		printInOrder(map);
 		
 		map.put(5, 5);		// Needs LL rotation at node 25
 		printInOrder(map);
-		
-		System.out.println("After LL rotation at node 25");
-		printBalanceFactor(map);
 		
 		map.put(34, 34);
 		printInOrder(map);
@@ -26,34 +23,29 @@ public class MyAVLTreeTest {
 		map.put(50, 50);     // Needs RR rotation at node 25 
 		printInOrder(map);
 		
-		System.out.println("After RR rotation at node 25");
-		printBalanceFactor(map);
 		
-		map.put(30, 30);	// Needs RL rotation at node 20
+		map.put(55, 55);	// Needs RL rotation at node 20
 		printInOrder(map);
+	
 		
-		System.out.println("After RL rotation at node 25");
-		printBalanceFactor(map);
-		
-		map.put(10, 10);     // Needs LR rotation at node 20.
+		map.put(90, 90);     // Needs LR rotation at node 20.
 		printInOrder(map);
-
-		System.out.println("After LR rotation at node 25");
 		printBalanceFactor(map);
 		
-		map.remove(25);
-		System.out.println("Removed 25");
-		printBalanceFactor(map);
-		map.remove(30);
-		System.out.println("Removed 30");
-		printBalanceFactor(map);
-		map.remove(34);
-		System.out.println("Removed 34");
-		map.remove(50);
-		System.out.println("Removed 50");
-		printBalanceFactor(map);
-		map.remove(10);
-		map.remove(5);
+		//I accidentally added this code instead of the "remove bst" assignment
+//		map.remove(25);
+//		System.out.println("Removed 25");
+//		printBalanceFactor(map);
+//		map.remove(30);
+//		System.out.println("Removed 30");
+//		printBalanceFactor(map);
+//		map.remove(34);
+//		System.out.println("Removed 34");
+//		map.remove(50);
+//		System.out.println("Removed 50");
+//		printBalanceFactor(map);
+//		map.remove(10);
+//		map.remove(5);
 	}
 
 	private static void printInOrder(MyAVLTree<Integer, Integer> map) {
