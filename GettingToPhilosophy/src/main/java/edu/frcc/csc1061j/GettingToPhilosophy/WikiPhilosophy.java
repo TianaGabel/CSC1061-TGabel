@@ -69,10 +69,14 @@ public class WikiPhilosophy {
             	// If this node is a text node make sure you are not within parentheses
             	
             	// If this node has a link you can get it by accessing the href attribute in the node
-            	
+            	String link = "";
             	// If the link is not null and not an empty string and does not start with a # sign 
             	// and is not within parentheses, follow the link recursively by calling testConjecture() 
             	// until you reach your objective or run past the limit. 
+            	if ((link != null) | !link.isEmpty() | link.charAt(0) == '#') {
+            		source = link;
+            		testConjecture(destination, source, limit);  //TODO do I need to update limit
+            	}
             }
 
         }
