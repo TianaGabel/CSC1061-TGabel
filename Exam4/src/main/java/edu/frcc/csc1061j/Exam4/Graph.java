@@ -2,6 +2,7 @@ package edu.frcc.csc1061j.Exam4;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
@@ -54,6 +55,13 @@ public class Graph<E> {
 
 		public boolean equals(Object edge) {
 			return s.equals(((Edge) edge).s) && d.equals(((Edge) edge).d);
+		}
+		
+		public boolean parallel(Object edge) {
+				//This is for the case the edge was written in the opposite direction
+				//Also works forself loops
+				//but not when the edges are equal
+				return d.equals(((Edge) edge).s) && s.equals(((Edge) edge).d);
 		}
 
 		@Override
@@ -214,7 +222,74 @@ public class Graph<E> {
 	** The spanning tree will be a new graph
 	*/
 	public Graph<E> findMinimumSpanningTree() {
+		//kruskal's algorithm 
+		//Get current edges
+		ArrayList<Edge> minEdges = new ArrayList<>();
+		List<Vertex> justVertices = new ArrayList<Vertex>(); 
+		//We will create our graph and then populate it with vertices
+		for (Vertex v: vertices) {
+			//This will copy all of the vertices without their neighbors so that we can only add in the edges that we want to
+			justVertices.add(new Vertex(v.elem)); 		
+		}
+		Graph<E> minTree = new Graph<E>(justVertices);
+		for (int i = 0; i < vertices.size(); i++) {
+			List<Edge> neighbors = vertices.get(i).neighbors;
+			Edge newEntry;
+			
+			//remove all parallel edges
+			for (Edge edge : neighbors) { //these are the edges we add
+				newEntry = edge;
+				newEntry.d = minTree.findVertex(newEntry.d.elem); //This ensures that the Vertex will not have neighbors
+				newEntry.s = minTree.findVertex(newEntry.s.elem);
+				if (!justVertices.contains(newEntry.d)) {
+					justVertices.add(newEntry.d);
+				}
+				if (!justVertices.contains(newEntry.s)) {
+					justVertices.add(newEntry.s);
+				}
+				for(Edge onList: minEdges) {
+					//Check if edges are parallel, the same or self-loop
+					if(/*edge.parallel(onList)|| */edge.equals(onList) || edge.parallel(edge)) {
+						newEntry = null;
+						break; //There should never be any pairs already on the list
+					}
+				}
+				if (newEntry != null) {
+					minEdges.add(newEntry);
+				}
+			}
+		}
+		//Sort edges in terms of weight from lowest to highest
+		//we can just make use of the compareto method
+		Collections.sort(minEdges);
+		// the ... is the lowest
 		
-		return null;
+		//We'll create a new graph with only the vertices
+		
+//		for (Vertex v: vertices) {
+//			//This will copy all of the vertices without their neighbors so that we can only add in the edges that we want to
+//			justVertices.add(new Vertex(v.elem)); 		}
+		
+		//then we add the edges to the tree/graph
+		//if it does not form a cycle, we can check this using a dfs
+		// if v2 is including in the dfs list of v1 then it is a cycle
+		for(int i = 0; i < minEdges.size(); i++) {
+			Edge edge = minEdges.get(i);
+			//We check to see if s already reaches d, if it doesn't then we add the edge
+			
+			if(!(minTree.dfs(edge.d).contains(edge.s)) ) {
+				System.out.println("Added edge" +  edge.s + "-" + edge.d);
+				System.out.println("dfs" + minTree.dfs(edge.d));
+				System.out.println("dfs" + minTree.dfs(edge.s));
+				minTree.addEdge(edge);
+			} else {
+				System.out.println("not added edge" +  edge.s + "-" + edge.d);
+				System.out.println("dfs" + minTree.dfs(edge.d));
+				System.out.println("dfs" + minTree.dfs(edge.s));
+			}
+		}
+		
+		
+		return minTree;
 	}
 }
